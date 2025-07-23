@@ -9,8 +9,8 @@
   <!-- Barra de navegação -->
   <nav class="navbar">
     <div class="botoes">
-      <button id="btnSintaxe">📘 Sintaxe</button>
-      <button id="btnModo">🌙 Modo Escuro</button>
+      <button id="btnSintaxe">📘 Sintaxe.</button>
+      <button id="btnModo">🌙 Modo Escuro.</button>
     </div>
     <div class="logo-center">
       <img src="css/img/logo2.gif" alt="Logo da IDE" class="logo-img" id="logo" />

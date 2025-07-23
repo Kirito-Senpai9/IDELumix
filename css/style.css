@@ -1,0 +1,292 @@
+/* ======== ESTILOS GERAIS ======== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url("img/fundo2.jpg") no-repeat center center fixed; /* Fundo do modo claro */
+  background-size: cover;
+  color: #1e1e1e; /* Cor de texto no modo claro */
+  transition: all 0.4s ease;
+  min-height: 100vh; /* Garante altura mínima de tela */
+  display: flex;
+  flex-direction: column;
+}
+
+/* ======== TÍTULOS ======== */
+h1, h2 {
+  text-align: center;
+  color: #1100ff;
+}
+
+/* ======== ÁREA DO CÓDIGO ======== */
+textarea {
+  width: 97%;
+  height: 150px;
+  padding: 10px;
+  font-size: 16px;
+  font-family: monospace;
+  border: 1px solid #0212ff;
+  border-radius: 5px;
+  resize: vertical;
+  margin-top: 10px;
+  background-color: #cfd8f7;
+  color: #000000;
+}
+
+/* ======== CÓDIGO JAVA E SAÍDA ======== */
+pre {
+  background: #cfd8f7;
+  color: #222;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  border: 1px solid #ccc;
+}
+
+/* ======== BOTÕES GERAIS ======== */
+button {
+  background-color: #220bee;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* ======== CONTAINER PRINCIPAL (IDE) ======== */
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: white;
+  border: 2px solid #0004ff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: all 0.4s ease;
+  flex: 1;
+}
+
+/* ======== NAVBAR ======== */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  color: #000;
+  padding: 45px 85px;
+  position: relative;
+  border-bottom: 2px solid #ccc;
+}
+
+/* ======== LOGO CENTRALIZADA NA NAVBAR ======== */
+.logo-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logo-img {
+  height: 80px;
+  transition: all 0.3s ease;
+}
+
+/* ======== BOTÕES DA NAVBAR (ESQUERDA) ======== */
+.navbar .botoes {
+  position: absolute;
+  left: 20px;
+}
+
+.navbar .botoes button {
+  margin-left: 10px;
+}
+
+/* ======== MODO ESCURO ======== */
+body.dark-mode {
+  background: url("img/fundo.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #0f0;
+}
+
+body.dark-mode h1,
+body.dark-mode h2 {
+  color: #0f0;
+}
+
+body.dark-mode textarea {
+  background-color: #000;
+  color: #0f0;
+  border: 1px solid #0f0;
+}
+
+body.dark-mode pre {
+  background-color: #000;
+  color: #0f0;
+  border: 1px solid #0f0;
+}
+
+body.dark-mode button {
+  background-color: #003f00;
+  color: #ffffff;
+}
+
+body.dark-mode .container {
+  background: #000;
+  color: #0f0;
+  border: 2px solid #0f0;
+}
+
+body.dark-mode .navbar {
+  background-color: #000;
+  color: #0f0;
+  border-bottom: 2px solid #0f0;
+}
+
+/* ======== POPUP DE SINTAXE ======== */
+.popup {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  z-index: 999;
+  max-width: 600px;
+  width: 90%;
+  color: #000;
+  border: 1px solid #cccccc;
+}
+
+body.dark-mode .popup {
+  background: #111;
+  color: #0f0;
+  border: 1px solid #0f0;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+/* ======== SCROLL NO CONTEÚDO DO POPUP ======== */
+#sintaxeConteudo {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 10px;
+  padding-right: 10px;
+}
+
+/* ======== MELHORIA VISUAL FILTRO ======== */
+.filtro-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#filtroSintaxe {
+  padding: 6px 12px;
+  border: 2px solid #0004ff;
+  border-radius: 6px;
+  background-color: #e9edff;
+  color: #000;
+  font-weight: bold;
+  transition: border-color 0.3s;
+}
+
+#filtroSintaxe:focus {
+  outline: none;
+  border-color: #1100ff;
+}
+
+body.dark-mode #filtroSintaxe {
+  background-color: #111;
+  color: #0f0;
+  border-color: #0f0;
+}
+
+body.dark-mode #filtroSintaxe:focus {
+  border-color: #00ff00;
+}
+
+/* ======== BOTÃO FORA DA ROLAGEM ======== */
+.popup-footer {
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* ======== LOADER ======== */
+#loading {
+  display: none;
+  margin-top: 20px;
+  text-align: center;
+}
+
+#loading.active {
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #000;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ======== RODAPÉ ======== */
+footer {
+  background: #ffffff;
+  color: #000000;
+  text-align: center;
+  padding: 30px 0;
+  font-weight: 600;
+  box-shadow: inset 0 1px 3px rgba(25,105,0,0.10);
+  user-select: none;
+  transition: all 0.4s ease;
+}
+
+body.dark-mode footer {
+  background: #000000;
+  color: #00ff4c;
+  box-shadow: inset 0 1px 3px rgba(0, 50, 0, 0.3);
+}
+
+/* ======== FIELDSET ======== */
+fieldset {
+  border: 2px solid #0400ff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  margin-top: 16px;
+  color: #1a2a33;
+}
+
+fieldset legend {
+  font-weight: bold;
+  color: #0206fc;
+  padding: 0 8px;
+}
+
+body.dark-mode fieldset {
+  border-color: #0f0;
+  color: #0f0;
+}
+
+body.dark-mode fieldset legend {
+  color: #0f0;
+}

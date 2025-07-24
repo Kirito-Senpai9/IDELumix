@@ -29,7 +29,7 @@ foreach ($linhas as $linha) {
   if ($linha === "") continue;
 
   // Bloco de função
-  if (preg_match("/^funcao (\w+)\(\)$/", $linha, $m)) {
+  if (preg_match("/^funcao (\w+)\(\)\$/", $linha, $m)) {
     $emFuncao = true;
     $nomeFuncao = $m[1];
     $blocoFuncao = "public static int {$nomeFuncao}() {\n";
@@ -50,14 +50,13 @@ foreach ($linhas as $linha) {
   }
 
   // Chamada de função
-  if (preg_match("/^chamar (\w+)\(\)$/", $linha, $m)) {
-    $resultadoCompleto .= "[retorno de função: {$m[1]}()]\n";
+  if (preg_match("/^chamar (\w+)\(\)\$/", $linha, $m)) {
     $javaCode .= "{$m[1]}();\n";
     continue;
   }
 
   // Se
-  if (preg_match("/^se (.+)$/", $linha, $m)) {
+  if (preg_match("/^se (.+)\$/", $linha, $m)) {
     $javaCode .= "if ({$m[1]}) {\n";
     $condicao = $m[1];
     $condEval = $condicao;
@@ -92,7 +91,7 @@ foreach ($linhas as $linha) {
 }
 
 $resultadoFinal = implode("\n", array_filter(explode("\n", $resultadoCompleto), function ($linha) {
-  return str_starts_with($linha, "[") || str_contains(strtolower($linha), "final");
+  return !preg_match("/^\\[.*\\]\$/", trim($linha));
 }));
 
 echo json_encode([
@@ -101,40 +100,38 @@ echo json_encode([
 ]);
 
 
-
 function interpretar_linha($linha, &$variaveis, &$resultadoCompleto, $emFuncao = false) {
-  if (preg_match("/^definir (\w+) = (\w+)\(\)$/", $linha, $m)) {
+  if (preg_match("/^definir (\w+) = (\w+)\(\)\$/", $linha, $m)) {
     $variaveis[$m[1]] = "[retorno de função]";
-    $resultadoCompleto .= "[retorno de função]\n";
     return "int {$m[1]} = {$m[2]}();";
   }
 
-  if (preg_match("/^definir (\w+) = (\d+)$/", $linha, $m)) {
+  if (preg_match("/^definir (\w+) = (\d+)\$/", $linha, $m)) {
     $variaveis[$m[1]] = (int)$m[2];
     return "int {$m[1]} = {$m[2]};";
   }
 
-  elseif (preg_match("/^definir (\w+) = (\d+\.\d+)$/", $linha, $m)) {
+  elseif (preg_match("/^definir (\w+) = (\d+\.\d+)\$/", $linha, $m)) {
     $variaveis[$m[1]] = (float)$m[2];
     return "double {$m[1]} = {$m[2]};";
   }
 
-  elseif (preg_match('/^definir (\w+) = \"(.*)\"$/', $linha, $m)) {
+  elseif (preg_match('/^definir (\w+) = \"(.*)\"\$/', $linha, $m)) {
     $variaveis[$m[1]] = $m[2];
     return "String {$m[1]} = \"{$m[2]}\";";
   }
 
-  elseif (preg_match("/^mostrar (.+)$/", $linha, $m)) {
+  elseif (preg_match("/^mostrar (.+)\$/", $linha, $m)) {
     $expr = trim($m[1]);
     $javaLine = "System.out.println($expr);";
 
-    if (preg_match('/^\"(.*)\"$/', $expr, $t)) {
+    if (preg_match('/^\"(.*)\"\$/', $expr, $t)) {
       $val = $t[1];
       $resultadoCompleto .= $val . "\n";
     } elseif (is_numeric($expr) || isset($variaveis[$expr])) {
       $val = isset($variaveis[$expr]) ? $variaveis[$expr] : $expr;
       $resultadoCompleto .= $val . "\n";
-    } elseif (preg_match('/^[a-zA-Z_][a-zA-Z0-9_]*$/', $expr)) {
+    } elseif (preg_match('/^[a-zA-Z_][a-zA-Z0-9_]*\$/', $expr)) {
       $resultadoCompleto .= "[valor de $expr em tempo de execução]\n";
     } else {
       $eval = $expr;
@@ -147,42 +144,39 @@ function interpretar_linha($linha, &$variaveis, &$resultadoCompleto, $emFuncao =
     return $javaLine;
   }
 
-  elseif (preg_match("/^incrementar (\w+)$/", $linha, $m)) {
+  elseif (preg_match("/^incrementar (\w+)\$/", $linha, $m)) {
     if (isset($variaveis[$m[1]]) && is_numeric($variaveis[$m[1]])) {
       $variaveis[$m[1]]++;
     }
     return "{$m[1]}++;";
   }
 
-  elseif (preg_match("/^decrementar (\w+)$/", $linha, $m)) {
+  elseif (preg_match("/^decrementar (\w+)\$/", $linha, $m)) {
     if (isset($variaveis[$m[1]]) && is_numeric($variaveis[$m[1]])) {
       $variaveis[$m[1]]--;
     }
     return "{$m[1]}--;";
   }
 
-  elseif (preg_match("/^enquanto (.+)$/", $linha, $m)) {
+  elseif (preg_match("/^enquanto (.+)\$/", $linha, $m)) {
     return "while ({$m[1]}) {";
   }
 
-  elseif (preg_match("/^para (\w+) de (\d+) ate (\d+)$/", $linha, $m)) {
-    $resultadoCompleto .= "[laço para {$m[1]} de {$m[2]} até {$m[3]}]\n";
+  elseif (preg_match("/^para (\w+) de (\d+) ate (\d+)\$/", $linha, $m)) {
     return "for (int {$m[1]} = {$m[2]}; {$m[1]} <= {$m[3]}; {$m[1]}++) {";
   }
 
-  elseif (preg_match("/^retornar (.+)$/", $linha, $m)) {
+  elseif (preg_match("/^retornar (.+)\$/", $linha, $m)) {
     return "return {$m[1]};";
   }
 
-  elseif (preg_match("/^ler (\w+)$/", $linha, $m)) {
+  elseif (preg_match("/^ler (\w+)\$/", $linha, $m)) {
     $variaveis[$m[1]] = "usuario";
-    $resultadoCompleto .= "[entrada simulada: usuario]\n";
     return "String {$m[1]} = \"usuario\";";
   }
 
-  elseif (preg_match("/^esperar (\d+)$/", $linha, $m)) {
+  elseif (preg_match("/^esperar (\d+)\$/", $linha, $m)) {
     $ms = $m[1] * 1000;
-    $resultadoCompleto .= "[espera de {$m[1]}s]\n";
     return "Thread.sleep({$ms});";
   }
 
@@ -190,7 +184,6 @@ function interpretar_linha($linha, &$variaveis, &$resultadoCompleto, $emFuncao =
     return "}";
   }
 
-  $resultadoCompleto .= "Comando inválido: $linha\n";
   return "// Comando inválido";
 }
 ?>

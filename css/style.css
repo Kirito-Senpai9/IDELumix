@@ -296,16 +296,17 @@ body.dark-mode #filtroSintaxe:focus {
 
 #loading.active {
   display: block;
-  animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 0.7s ease-in-out;
 }
 
 .loader {
   border: 8px solid #f3f3f3;
-  border-top: 8px solid #000;
+  border-top: 8px solid var(--primary);
+  border-right: 8px solid var(--secondary);
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite;
+  width: 60px;
+  height: 60px;
+  animation: spin 1.5s ease-in-out infinite;
   margin: auto;
 }
 
@@ -336,6 +337,7 @@ footer {
   color: var(--text-dark);
   text-align: center;
   width: 100%;
+  align-self: stretch;
   padding: 20px 0;
   font-weight: 600;
   border-top: 1px solid var(--secondary);

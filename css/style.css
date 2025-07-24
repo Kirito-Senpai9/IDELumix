@@ -95,24 +95,28 @@ button:hover {
 /* ======== NAVBAR ======== */
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
   color: var(--text-dark);
   width: 100%;
   padding: 15px 30px;
   position: sticky;
   top: 0;
   border-bottom: 1px solid var(--secondary);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   animation: fadeDown 0.5s ease;
+  z-index: 1000;
 }
 
 .nav-title {
   margin: 0;
   font-size: 24px;
   font-weight: 600;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 body.dark-mode .nav-title {
@@ -123,10 +127,24 @@ body.dark-mode .nav-title {
 .navbar .botoes {
   display: flex;
   gap: 10px;
+  margin-left: auto;
 }
 
 .navbar .botoes button {
   margin-left: 0;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 20px;
+  padding: 8px 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.navbar .botoes button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbar .botoes button:active {
+  transform: scale(0.95);
 }
 
 /* ======== MODO ESCURO ======== */
@@ -158,6 +176,10 @@ body.dark-mode button {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
+body.dark-mode .navbar .botoes button {
+  background: linear-gradient(135deg, #005f3f, #008651);
+}
+
 body.dark-mode button:hover {
   background-color: #008651;
 }
@@ -169,7 +191,8 @@ body.dark-mode .container {
 }
 
 body.dark-mode .navbar {
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
   color: var(--accent-green);
   border-bottom: 1px solid var(--accent-green);
   width: 100%;
@@ -298,6 +321,7 @@ footer {
   backdrop-filter: blur(10px);
   color: var(--text-dark);
   text-align: center;
+  width: 100%;
   padding: 20px 0;
   font-weight: 600;
   border-top: 1px solid var(--secondary);
@@ -307,7 +331,8 @@ footer {
 }
 
 body.dark-mode footer {
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
   color: var(--accent-green);
   border-top: 1px solid var(--accent-green);
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.5);

@@ -62,7 +62,7 @@ foreach ($linhas as $linha) {
     $condicao = $m[1];
     $condEval = $condicao;
     foreach ($variaveis as $k => $v) {
-      $condEval = str_replace($k, $v, $condEval);
+      $condEval = preg_replace('/\\b' . preg_quote($k, '/') . '\\b/', $v, $condEval);
     }
     $condResult = safe_eval($condEval);
     $condicaoAtiva = ($condResult) ? "se" : "senao";
@@ -139,7 +139,7 @@ function interpretar_linha($linha, &$variaveis, &$resultadoCompleto, $emFuncao =
     } else {
       $eval = $expr;
       foreach ($variaveis as $k => $v) {
-        $eval = str_replace($k, $v, $eval);
+        $eval = preg_replace('/\\b' . preg_quote($k, '/') . '\\b/', $v, $eval);
       }
       $val = safe_eval($eval);
       $resultadoCompleto .= $val . "\n";

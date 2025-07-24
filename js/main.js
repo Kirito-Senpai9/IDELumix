@@ -1,13 +1,11 @@
 // Alterna o modo escuro/claro e atualiza elementos visuais
 document.getElementById("btnModo").addEventListener("click", () => {
   const body = document.body;
-  const logo = document.getElementById("logo");
   const btnModo = document.getElementById("btnModo");
 
   body.classList.toggle("dark-mode");
   const modoEscuroAtivo = body.classList.contains("dark-mode");
 
-  logo.src = modoEscuroAtivo ? "css/img/logo.gif" : "css/img/logo2.gif";
   btnModo.textContent = modoEscuroAtivo ? "☀️ Modo Claro" : "🌙 Modo Escuro";
 });
 
@@ -25,11 +23,14 @@ function fecharPopup() {
 
 // Função para filtrar por tipo de sintaxe
 function filtrarSintaxe() {
-  const filtro = document.getElementById("filtroSintaxe").value;
+  const filtro = document
+    .getElementById("filtroSintaxe")
+    .value.trim()
+    .toLowerCase();
   const itens = document.querySelectorAll("#listaSintaxe li");
 
   itens.forEach((item) => {
-    const tipo = item.getAttribute("data-tipo");
+    const tipo = item.getAttribute("data-tipo").toLowerCase();
     if (filtro === "todos" || filtro === tipo) {
       item.style.display = "list-item";
     } else {

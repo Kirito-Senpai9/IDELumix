@@ -234,6 +234,20 @@ body.dark-mode .popup {
   padding-right: 10px;
 }
 
+/* ======== DESTAQUE COMANDOS SINTAXE ======== */
+#listaSintaxe code {
+  background-color: #ffffcc;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+body.dark-mode #listaSintaxe code {
+  background-color: #333300;
+  color: var(--accent-green);
+}
+
 /* ======== MELHORIA VISUAL FILTRO ======== */
 .filtro-area {
   display: flex;

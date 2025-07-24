@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LUMIX IDE</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -18,7 +19,7 @@
   </nav>
 
   <!-- Área principal -->
-  <div class="container">
+  <main class="container">
     <h1>LUMIX IDE</h1>
 
     <label for="codigo">Digite seu código com a nova sintaxe:</label>
@@ -40,7 +41,7 @@
       <label><input type="radio" name="modoResultado" value="final" /> Resultado Final</label>
     </fieldset>
     <pre id="resultadoExecucao"></pre>
-  </div>
+  </main>
 
   <!-- Janela de ajuda com sintaxe -->
   <div id="popupSintaxe" class="popup hidden">

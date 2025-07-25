@@ -9,6 +9,7 @@
 <body>
   <!-- Barra de navegação -->
   <nav class="navbar">
+    <a href="index.html" class="home-btn" aria-label="Página inicial"></a>
     <h1 class="nav-title">Lumix IDE</h1>
     <div class="botoes">
       <button id="btnSintaxe">📘 Sintaxe</button>

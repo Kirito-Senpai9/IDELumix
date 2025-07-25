@@ -1,5 +1,13 @@
-// Alterna o modo escuro/claro e atualiza elementos visuais
+// Controle de modo escuro/claro com persistência em localStorage
 const btnModo = document.getElementById("btnModo");
+
+// Aplica o modo salvo ao carregar a página
+const preferenciaSalva = localStorage.getItem("darkMode");
+if (preferenciaSalva === "true") {
+  document.body.classList.add("dark-mode");
+  if (btnModo) btnModo.textContent = "☀️ Modo Claro";
+}
+
 if (btnModo) {
   btnModo.addEventListener("click", () => {
     const body = document.body;
@@ -10,6 +18,9 @@ if (btnModo) {
     btnModo.textContent = modoEscuroAtivo
       ? "☀️ Modo Claro"
       : "🌙 Modo Escuro";
+
+    // Salva a preferência para não perder ao recarregar ou mudar de página
+    localStorage.setItem("darkMode", modoEscuroAtivo);
   });
 }
 

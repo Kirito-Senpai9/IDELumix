@@ -386,3 +386,90 @@ body.dark-mode fieldset {
 body.dark-mode fieldset legend {
   color: var(--accent-green);
 }
+
+/* ======== HOME HERO ======== */
+.home-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #ffffff;
+  text-align: center;
+  padding: 40px 20px;
+  animation: fadeIn 1s ease;
+}
+
+.home-hero h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.home-hero p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.ide-button {
+  margin-top: 20px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.ide-button:hover {
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+}
+
+/* ======== TEAM SECTION ======== */
+.team-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+.team-member {
+  width: 250px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  animation: fadeUp 0.8s ease;
+}
+
+.team-member img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border: 3px solid var(--secondary);
+}
+
+.team-member h3 {
+  margin: 10px 0 5px;
+  color: var(--primary);
+}
+
+.team-member p {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+body.dark-mode .home-hero {
+  background: linear-gradient(135deg, #003f2d, #00664b);
+  color: var(--accent-green);
+}
+
+body.dark-mode .team-member {
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--accent-green);
+  border: 1px solid var(--accent-green);
+}
+
+body.dark-mode .team-member img {
+  border-color: var(--accent-green);
+}
+

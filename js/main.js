@@ -1,20 +1,27 @@
 // Alterna o modo escuro/claro e atualiza elementos visuais
-document.getElementById("btnModo").addEventListener("click", () => {
-  const body = document.body;
-  const btnModo = document.getElementById("btnModo");
+const btnModo = document.getElementById("btnModo");
+if (btnModo) {
+  btnModo.addEventListener("click", () => {
+    const body = document.body;
 
-  body.classList.toggle("dark-mode");
-  const modoEscuroAtivo = body.classList.contains("dark-mode");
+    body.classList.toggle("dark-mode");
+    const modoEscuroAtivo = body.classList.contains("dark-mode");
 
-  btnModo.textContent = modoEscuroAtivo ? "☀️ Modo Claro" : "🌙 Modo Escuro";
-});
+    btnModo.textContent = modoEscuroAtivo
+      ? "☀️ Modo Claro"
+      : "🌙 Modo Escuro";
+  });
+}
 
-// Exibe o popup de sintaxe
-document.getElementById("btnSintaxe").addEventListener("click", () => {
-  document.getElementById("popupSintaxe").classList.remove("hidden");
-  document.getElementById("filtroSintaxe").value = "todos";
-  filtrarSintaxe(); // Garante que tudo aparece ao abrir
-});
+// Exibe o popup de sintaxe se o botão existir (apenas na IDE)
+const btnSintaxe = document.getElementById("btnSintaxe");
+if (btnSintaxe) {
+  btnSintaxe.addEventListener("click", () => {
+    document.getElementById("popupSintaxe").classList.remove("hidden");
+    document.getElementById("filtroSintaxe").value = "todos";
+    filtrarSintaxe(); // Garante que tudo aparece ao abrir
+  });
+}
 
 // Fecha o popup
 function fecharPopup() {

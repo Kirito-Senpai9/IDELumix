@@ -93,9 +93,9 @@ button:hover {
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.3s;
   flex: 1;
-  animation: fadeIn 0.6s ease;
+  animation: zoomFade 0.6s ease;
 }
 
 /* ======== NAVBAR ======== */
@@ -157,7 +157,25 @@ body.dark-mode .nav-title {
 .home-hero {
   text-align: center;
   margin: 40px 0;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
   animation: fadeDown 0.8s ease;
+}
+.home-hero h1,
+.home-hero p {
+  color: inherit;
+}
+
+body.dark-mode .home-hero {
+  background: linear-gradient(135deg, #005f3f, #008651);
+  color: var(--accent-green);
+}
+body.dark-mode .home-hero h1,
+body.dark-mode .home-hero p {
+  color: inherit;
 }
 
 /* ======== MODO ESCURO ======== */
@@ -201,6 +219,7 @@ body.dark-mode .container {
   background: rgba(0,0,0,0.85);
   color: var(--accent-green);
   border: 1px solid var(--accent-green);
+  transition: background 0.4s ease, transform 0.3s;
 }
 
 body.dark-mode .navbar {
@@ -343,6 +362,11 @@ body.dark-mode #filtroSintaxe:focus {
   to { opacity: 1; }
 }
 
+@keyframes zoomFade {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
 @keyframes memberFade {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -410,10 +434,13 @@ body.dark-mode fieldset legend {
   gap: 20px;
   margin: 40px auto;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--secondary);
   border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   max-width: 1000px;
-  animation: fadeUp 0.8s ease;
+  animation: zoomFade 0.8s ease;
+  transition: background 0.4s ease, transform 0.3s;
 }
 
 .team-member {
@@ -448,7 +475,8 @@ body.dark-mode fieldset legend {
 }
 
 body.dark-mode .team-container {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--accent-green);
 }
 
 body.dark-mode .team-member h3,

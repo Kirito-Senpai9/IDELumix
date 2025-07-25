@@ -125,6 +125,54 @@ button:hover {
   transform: translateX(-50%);
 }
 
+/* Ícone de casa para voltar à Home */
+.home-btn {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.home-btn::before,
+.home-btn::after {
+  content: "";
+  position: absolute;
+  transition: transform 0.3s;
+}
+
+.home-btn::before {
+  width: 16px;
+  height: 14px;
+  background: var(--primary);
+  bottom: 6px;
+  border-radius: 3px;
+}
+
+.home-btn::after {
+  bottom: 14px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid var(--secondary);
+}
+
+.home-btn:hover::before,
+.home-btn:hover::after {
+  transform: translateY(-2px);
+}
+
+body.dark-mode .home-btn::before {
+  background: #005f3f;
+}
+
+body.dark-mode .home-btn::after {
+  border-bottom-color: #008651;
+}
+
 body.dark-mode .nav-title {
   color: var(--accent-green);
 }

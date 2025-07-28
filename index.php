@@ -99,8 +99,8 @@
     </div>
   </div>
 
-  <div id="temaOverlay" class="overlay"></div>
-  <div id="popupTemas" class="popup-temas">
+  <div id="temaOverlay" class="overlay hidden"></div>
+  <div id="popupTemas" class="popup-temas hidden">
     <div class="title-bar">
       <span>🎨 Temas</span>
       <button id="fecharTemas" class="fechar-btn" data-tooltip="Fechar janela">X</button>

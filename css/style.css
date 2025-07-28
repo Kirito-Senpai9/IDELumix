@@ -1,63 +1,71 @@
 /* ======== VARIÁVEIS DE CORES ======== */
+/*
+   As variáveis a seguir definem a paleta principal do tema.
+   Altere esses valores para modificar as cores base da aplicação.
+*/
 :root {
-  --primary: #6c5ce7;
-  --secondary: #a29bfe;
-  --bg-light: #f5f7fa;
-  --bg-dark: #1e1e2f;
-  --text-dark: #2d3436;
-  --accent-green: #2ecc71;
+  --primary: #6c5ce7;   /* Cor principal de destaques e botoes */
+  --secondary: #a29bfe; /* Cor complementar para gradientes */
+  --bg-light: #f5f7fa;  /* Cor de fundo no modo claro */
+  --bg-dark: #1e1e2f;   /* Cor de fundo no modo escuro */
+  --text-dark: #2d3436; /* Cor base para textos */
+  --accent-green: #2ecc71; /* Acento utilizado em links e bordas */
   /* Barra de navegação translúcida no modo claro */
   --nav-bg: #ffffff99;
 }
 
 /* Temas adicionais */
+/*
+  As classes abaixo definem paletas alternativas. Basta aplicar a classe ao
+  elemento <body> para alterar completamente o visual.
+*/
 body.tema-pastel {
-  --primary: #ff9aa2;
-  --secondary: #ffb7b2;
-  --bg-light: #fff0f2;
-  --bg-dark: #ffdfe8;
-  --text-dark: #5c5470;
-  --accent-green: #ff80a0;
-  --nav-bg: #ffdfe899;
+  --primary: #ff9aa2;    /* Tons suaves de rosa */
+  --secondary: #ffb7b2;  /* Complemento para gradientes */
+  --bg-light: #fff0f2;   /* Fundo claro desse tema */
+  --bg-dark: #ffdfe8;    /* Utilizado em elementos escuros */
+  --text-dark: #5c5470;  /* Cor principal de texto */
+  --accent-green: #ff80a0; /* Acento exclusivo do tema */
+  --nav-bg: #ffdfe899;   /* Fundo da barra de navegação */
 }
 
 body.tema-futurista {
-  --primary: #00e5ff;
-  --secondary: #7c00ff;
-  --bg-light: #141622;
-  --bg-dark: #05050c;
-  --text-dark: #e0e0e0;
-  --accent-green: #00ff9c;
-  --nav-bg: #05050c99;
+  --primary: #00e5ff;    /* Azul neon para destaques */
+  --secondary: #7c00ff;  /* Roxo vibrante de apoio */
+  --bg-light: #141622;   /* Tom escuro de fundo */
+  --bg-dark: #05050c;    /* Tom ainda mais escuro */
+  --text-dark: #e0e0e0;  /* Letras em alto contraste */
+  --accent-green: #00ff9c; /* Verde cintilante usado em links */
+  --nav-bg: #05050c99;   /* Barra de navegação escura */
 }
 
 body.tema-terra {
-  --primary: #795548;
-  --secondary: #bcaaa4;
-  --bg-light: #f5f0e6;
-  --bg-dark: #3e2723;
-  --text-dark: #4e342e;
-  --accent-green: #8bc34a;
-  --nav-bg: #3e272399;
+  --primary: #795548;    /* Paleta puxada para marrom */
+  --secondary: #bcaaa4;  /* Tons terrosos complementares */
+  --bg-light: #f5f0e6;   /* Fundo claro bege */
+  --bg-dark: #3e2723;    /* Elementos escuros */
+  --text-dark: #4e342e;  /* Textos em marrom escuro */
+  --accent-green: #8bc34a; /* Contraste em verde */
+  --nav-bg: #3e272399;   /* Navegação parcialmente translúcida */
 }
 
 /* Modo escuro utilizando variáveis para compatibilidade com miniaturas */
 body.dark-mode {
-  --primary: #005f3f;
-  --secondary: #008651;
+  --primary: #005f3f;  /* Versão alternativa da cor principal */
+  --secondary: #008651; /* Segundo tom para o modo escuro */
   /* Mantém a barra escura no modo noturno */
   --nav-bg: #1e1e2f99;
 }
 
 /* ======== ESTILOS GERAIS ======== */
 body {
-  margin: 0;
+  margin: 0;  /* Remove espaçamento padrão */
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: var(--bg-light);
+  background: var(--bg-light); /* Utiliza cor definida no tema */
   color: var(--text-dark);
   transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
-  min-height: 100vh;
+  min-height: 100vh;       /* Garante que o body ocupe a tela toda */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -66,20 +74,20 @@ body {
 /* ======== TÍTULOS ======== */
 h1, h2 {
   text-align: center;
-  color: var(--primary);
+  color: var(--primary); /* Destaque de títulos */
   margin-top: 0;
 }
 
 /* ======== ÁREA DO CÓDIGO ======== */
 textarea {
-  width: 100%;
-  height: 150px;
+  width: 100%;             /* Ocupa toda a largura do contêiner */
+  height: 150px;           /* Altura inicial do editor */
   padding: 10px;
   font-size: 16px;
-  font-family: monospace;
+  font-family: monospace;  /* Aparência de código */
   border: 1px solid var(--secondary);
   border-radius: 6px;
-  resize: vertical;
+  resize: vertical;        /* Usuário pode aumentar a área */
   margin-top: 10px;
   background-color: var(--bg-light);
   color: #000;
@@ -88,24 +96,24 @@ textarea {
 
 /* ======== CÓDIGO JAVA E SAÍDA ======== */
 pre {
-  background: var(--bg-light);
+  background: var(--bg-light);  /* Mantém consistência com o tema */
   color: #222;
   padding: 15px;
   border-radius: 6px;
-  overflow-x: auto;
+  overflow-x: auto;            /* Permite rolagem horizontal */
   border: 1px solid #ccc;
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 }
 
 #codigoJava,
 #resultadoExecucao {
-  max-height: 250px;
+  max-height: 250px;  /* Limita a altura das áreas de texto */
   overflow-y: auto;
 }
 
 /* ======== BOTÕES GERAIS ======== */
 button {
-  background-color: var(--primary);
+  background-color: var(--primary); /* Usa cor principal */
   color: #ffffff;
   padding: 10px 20px;
   font-size: 16px;
@@ -118,18 +126,18 @@ button {
 }
 
 button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px); /* Efeito de elevação */
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   background-color: var(--secondary);
 }
 
 /* ======== CONTAINER PRINCIPAL (IDE) ======== */
 .container {
-  width: 90%;
+  width: 90%;              /* Largura máxima responsiva */
   max-width: 800px;
   margin: 40px auto;
   background: var(--bg-light);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px); /* Efeito de vidro fosco */
   border: 1px solid var(--secondary);
   border-radius: 12px;
   padding: 30px;
@@ -144,12 +152,12 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--nav-bg);
+  background: var(--nav-bg);  /* Usa cor definida para a barra */
   backdrop-filter: blur(12px);
   color: var(--accent-green);
   width: 100%;
   padding: 15px 30px;
-  position: sticky;
+  position: sticky;           /* Fixa no topo ao rolar */
   top: 0;
   border-bottom: 1px solid var(--accent-green);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -162,14 +170,14 @@ button:hover {
   margin: 0;
   font-size: 24px;
   font-weight: 600;
-  position: absolute;
+  position: absolute;       /* Centraliza o título na barra */
   left: 50%;
   transform: translateX(-50%);
 }
 
 /* Ícone de casa para voltar à Home */
 .home-btn {
-  width: 40px;
+  width: 40px;  /* Tamanho do ícone de casa */
   height: 40px;
   position: absolute;
   left: 30px;
@@ -184,13 +192,13 @@ button:hover {
 .home-btn::after {
   content: "";
   position: absolute;
-  transition: transform 0.3s;
+  transition: transform 0.3s; /* Suaviza animação do ícone */
 }
 
 .home-btn::before {
   width: 20px;
   height: 18px;
-  background: var(--primary);
+  background: var(--primary); /* Parte inferior da casa */
   bottom: 8px;
   border-radius: 3px;
 }
@@ -199,7 +207,7 @@ button:hover {
   bottom: 18px;
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
-  border-bottom: 12px solid var(--secondary);
+  border-bottom: 12px solid var(--secondary); /* Telhado */
 }
 
 .home-btn:hover::before,
@@ -289,8 +297,8 @@ body.dark-mode .home-hero p {
 
 /* ======== MODO ESCURO ======== */
 body.dark-mode {
-  background: var(--bg-dark);
-  color: var(--accent-green);
+  background: var(--bg-dark);   /* Ativa fundo escuro */
+  color: var(--accent-green);   /* Textos com alto contraste */
 }
 
 body.dark-mode h1,
@@ -334,7 +342,7 @@ body.dark-mode .container {
   top: 20%;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--bg-light);
+  background: var(--bg-light); /* Fundo semi-transparente */
   backdrop-filter: blur(6px);
   padding: 20px;
   border-radius: 10px;
@@ -358,7 +366,7 @@ body.dark-mode .popup {
 
 /* ======== SCROLL NO CONTEÚDO DO POPUP ======== */
 #sintaxeConteudo {
-  max-height: 300px;
+  max-height: 300px;      /* Limita tamanho do conteúdo */
   overflow-y: auto;
   margin-top: 10px;
   padding-right: 10px;
@@ -366,7 +374,7 @@ body.dark-mode .popup {
 
 /* ======== DESTAQUE COMANDOS SINTAXE ======== */
 #listaSintaxe code {
-  background-color: #ffffcc;
+  background-color: #ffffcc; /* Destaque para trechos de código */
   padding: 2px 4px;
   border-radius: 4px;
   font-weight: bold;
@@ -388,7 +396,7 @@ body.dark-mode #listaSintaxe code {
 
 #filtroSintaxe {
   padding: 6px 12px;
-  border: 2px solid #0004ff;
+  border: 2px solid #0004ff; /* Borda azul no modo claro */
   border-radius: 6px;
   background-color: #e9edff;
   color: #000;
@@ -430,8 +438,8 @@ body.dark-mode #filtroSintaxe:focus {
 }
 
 .loader {
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid var(--primary);
+  border: 8px solid #f3f3f3;          /* Círculo base */
+  border-top: 8px solid var(--primary); /* Parte colorida gira */
   border-right: 8px solid var(--secondary);
   border-radius: 50%;
   width: 60px;
@@ -440,6 +448,7 @@ body.dark-mode #filtroSintaxe:focus {
   margin: auto;
 }
 
+/* Animação do loader */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -584,7 +593,7 @@ body.dark-mode .team-member .desc {
 
 /* ======== POPUP DE TEMAS ======== */
 .overlay {
-  position: fixed;
+  position: fixed;              /* Cobre a tela ao abrir pop-up */
   top: 0;
   left: 0;
   width: 100%;
@@ -610,7 +619,7 @@ body.dark-mode .team-member .desc {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.95);
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.25); /* Janela translúcida */
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 12px;
@@ -620,7 +629,7 @@ body.dark-mode .team-member .desc {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, transform 0.3s ease;
-  width: 260px;
+  width: 260px; /* Largura fixa das opções */
 }
 
 .popup-temas.hidden {
@@ -654,7 +663,7 @@ body.dark-mode .popup-temas {
 
 .popup-temas .tema-opcoes {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Lista vertical de temas */
   gap: 8px;
   margin-top: 10px;
 }
@@ -699,7 +708,7 @@ body.dark-mode .popup-temas {
   border-radius: 20px;
   padding: 8px 16px;
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s; /* Animação suave */
 }
 
 .popup-temas .reset-posicao:hover {
@@ -713,11 +722,11 @@ body.dark-mode .popup-temas {
 
 /* ======== TOOLTIP ======== */
 [data-tooltip] {
-  position: relative;
+  position: relative; /* Container do tooltip */
 }
 
 [data-tooltip]::after {
-  content: attr(data-tooltip);
+  content: attr(data-tooltip);  /* Texto definido no atributo */
   position: absolute;
   left: 50%;
   bottom: calc(100% + 5px);
@@ -735,6 +744,6 @@ body.dark-mode .popup-temas {
 }
 
 [data-tooltip]:hover::after {
-  opacity: 1;
+  opacity: 1; /* Exibe o tooltip */
   transform: translateX(-50%) translateY(0);
 }

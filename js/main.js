@@ -28,10 +28,14 @@ function carregarTema() {
 
 function abrirPopupTemas() {
   if (!popupTemas) return;
+  popupTemas.style.display = 'block';
+  temaOverlay.style.display = 'block';
   popupTemas.classList.remove('hidden');
   temaOverlay.classList.remove('hidden');
-  popupTemas.classList.add('active');
-  temaOverlay.classList.add('active');
+  requestAnimationFrame(() => {
+    popupTemas.classList.add('active');
+    temaOverlay.classList.add('active');
+  });
   restaurarPosicao();
 }
 
@@ -39,8 +43,12 @@ function fecharPopupTemas() {
   if (!popupTemas) return;
   popupTemas.classList.remove('active');
   temaOverlay.classList.remove('active');
-  popupTemas.classList.add('hidden');
-  temaOverlay.classList.add('hidden');
+  setTimeout(() => {
+    popupTemas.classList.add('hidden');
+    temaOverlay.classList.add('hidden');
+    popupTemas.style.display = 'none';
+    temaOverlay.style.display = 'none';
+  }, 300);
 }
 
 
@@ -61,6 +69,7 @@ function atualizarMiniaturas() {
 document.addEventListener('DOMContentLoaded', () => {
   carregarTema();
   atualizarMiniaturas();
+  fecharPopupTemas();
 
   if (btnTemas) btnTemas.addEventListener('click', abrirPopupTemas);
   if (fecharTemas) fecharTemas.addEventListener('click', fecharPopupTemas);

@@ -119,6 +119,15 @@ function initTemaPopup() {
       fecharPopupTemas();
     });
   });
+
+  if (titleBar) titleBar.addEventListener('mousedown', iniciarDrag);
+
+  if (resetPosicao) {
+    resetPosicao.addEventListener('click', () => {
+      try { localStorage.removeItem('popupTemasPos'); } catch (e) { /* ignore */ }
+      restaurarPosicao();
+    });
+  }
 }
 
 if (document.readyState === 'loading') {
@@ -173,14 +182,7 @@ function pararDrag() {
   }
 }
 
-if (titleBar) titleBar.addEventListener('mousedown', iniciarDrag);
 
-if (resetPosicao) {
-  resetPosicao.addEventListener('click', () => {
-    try { localStorage.removeItem('popupTemasPos'); } catch (e) { /* ignore */ }
-    restaurarPosicao();
-  });
-}
 
 // Popup de sintaxe existente
 const btnSintaxe = document.getElementById('btnSintaxe');

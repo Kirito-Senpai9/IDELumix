@@ -12,8 +12,9 @@
     <a href="index.html" class="home-btn" aria-label="Página inicial"></a>
     <h1 class="nav-title">Lumix IDE</h1>
     <div class="botoes">
-      <button id="btnSintaxe">📘 Sintaxe</button>
-      <button id="btnModo">🌙 Modo Escuro</button>
+      <button id="btnSintaxe" data-tooltip="Exibir Sintaxe">📘 Sintaxe</button>
+      <button id="btnModo" data-tooltip="Alternar Modo Claro/Escuro">🌙 Modo Escuro</button>
+      <button id="btnTemas" data-tooltip="Alterar tema da IDE">🎨</button>
     </div>
   </nav>
 
@@ -24,7 +25,7 @@
     <label for="codigo">Digite seu código com a nova sintaxe:</label>
     <textarea id="codigo" placeholder="ex: definir x = 10"></textarea>
 
-    <button onclick="interpretarCodigo()">Interpretar</button>
+    <button onclick="interpretarCodigo()" data-tooltip="Executar código">▶️ Interpretar</button>
     <div id="loading">
       <div class="loader"></div>
       <p>Interpretando...</p>
@@ -94,8 +95,24 @@
       </ul>
     </div>
     <div class="popup-footer">
-      <button onclick="fecharPopup()">Fechar</button>
+      <button onclick="fecharPopup()" data-tooltip="Fechar janela">Fechar</button>
     </div>
+  </div>
+
+  <div id="temaOverlay" class="overlay"></div>
+  <div id="popupTemas" class="popup-temas">
+    <div class="title-bar">
+      <span>🎨 Temas</span>
+      <button id="fecharTemas" class="fechar-btn" data-tooltip="Fechar janela">X</button>
+    </div>
+    <div class="tema-opcoes">
+      <button class="tema-btn" data-tema="claro" data-tooltip="Tema Claro"><span class="miniatura"></span> Claro</button>
+      <button class="tema-btn" data-tema="escuro" data-tooltip="Tema Escuro"><span class="miniatura"></span> Escuro</button>
+      <button class="tema-btn" data-tema="pastel" data-tooltip="Cores suaves e delicadas"><span class="miniatura"></span> Pastel</button>
+      <button class="tema-btn" data-tema="futurista" data-tooltip="Tons escuros e neon"><span class="miniatura"></span> Futurista</button>
+      <button class="tema-btn" data-tema="terra" data-tooltip="Cores terrosas e naturais"><span class="miniatura"></span> Terra</button>
+    </div>
+    <button id="resetPosicao" class="reset-posicao" data-tooltip="Voltar para o centro">🔄 Resetar Posição</button>
   </div>
 
   <footer>

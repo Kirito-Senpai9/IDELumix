@@ -36,6 +36,12 @@ body.tema-terra {
   --accent-green: #4b8b3b;
 }
 
+/* Modo escuro utilizando variáveis para compatibilidade com miniaturas */
+body.dark-mode {
+  --primary: #005f3f;
+  --secondary: #008651;
+}
+
 /* ======== ESTILOS GERAIS ======== */
 body {
   margin: 0;
@@ -195,11 +201,11 @@ button:hover {
 }
 
 body.dark-mode .home-btn::before {
-  background: #005f3f;
+  background: var(--primary);
 }
 
 body.dark-mode .home-btn::after {
-  border-bottom-color: #008651;
+  border-bottom-color: var(--secondary);
 }
 
 body.dark-mode .nav-title {
@@ -247,7 +253,7 @@ body.dark-mode .nav-title {
 }
 
 body.dark-mode .home-hero {
-  background: linear-gradient(135deg, #005f3f, #008651);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: var(--accent-green);
 }
 body.dark-mode .home-hero h1,
@@ -279,17 +285,17 @@ body.dark-mode pre {
 }
 
 body.dark-mode button {
-  background-color: #005f3f;
+  background-color: var(--primary);
   color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 body.dark-mode .navbar .botoes button {
-  background: linear-gradient(135deg, #005f3f, #008651);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
 }
 
 body.dark-mode button:hover {
-  background-color: #008651;
+  background-color: var(--secondary);
 }
 
 body.dark-mode .container {

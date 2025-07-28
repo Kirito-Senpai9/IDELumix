@@ -1,12 +1,13 @@
 // Sistema de temas e popup de sintaxe
 const btnModo = document.getElementById('btnModo');
 const btnTemas = document.getElementById('btnTemas');
-const popupTemas = document.getElementById('popupTemas');
-const temaOverlay = document.getElementById('temaOverlay');
-const fecharTemas = document.getElementById('fecharTemas');
-const temaBtns = document.querySelectorAll('.tema-btn');
-const resetPosicao = document.getElementById('resetPosicao');
-const titleBar = popupTemas ? popupTemas.querySelector('.title-bar') : null;
+
+let popupTemas;
+let temaOverlay;
+let fecharTemas;
+let temaBtns;
+let resetPosicao;
+let titleBar;
 
 let selectedTheme = 'claro';
 
@@ -58,7 +59,40 @@ function atualizarMiniaturas() {
   });
 }
 
+function criarPopupTemas() {
+  temaOverlay = document.createElement('div');
+  temaOverlay.id = 'temaOverlay';
+  temaOverlay.className = 'overlay hidden';
+
+  popupTemas = document.createElement('div');
+  popupTemas.id = 'popupTemas';
+  popupTemas.className = 'popup-temas hidden';
+  popupTemas.innerHTML = `
+    <div class="title-bar">
+      <span>🎨 Temas</span>
+      <button id="fecharTemas" class="fechar-btn" data-tooltip="Fechar janela">X</button>
+    </div>
+    <div class="tema-opcoes">
+      <button class="tema-btn" data-tema="claro" data-tooltip="Tema Claro"><span class="miniatura"></span> Claro</button>
+      <button class="tema-btn" data-tema="escuro" data-tooltip="Tema Escuro"><span class="miniatura"></span> Escuro</button>
+      <button class="tema-btn" data-tema="pastel" data-tooltip="Cores suaves e delicadas"><span class="miniatura"></span> Pastel</button>
+      <button class="tema-btn" data-tema="futurista" data-tooltip="Tons escuros e neon"><span class="miniatura"></span> Futurista</button>
+      <button class="tema-btn" data-tema="terra" data-tooltip="Cores terrosas e naturais"><span class="miniatura"></span> Terra</button>
+    </div>
+    <button id="resetPosicao" class="reset-posicao" data-tooltip="Voltar para o centro">🔄 Resetar Posição</button>
+  `;
+
+  document.body.appendChild(temaOverlay);
+  document.body.appendChild(popupTemas);
+
+  fecharTemas = document.getElementById('fecharTemas');
+  temaBtns = popupTemas.querySelectorAll('.tema-btn');
+  resetPosicao = document.getElementById('resetPosicao');
+  titleBar = popupTemas.querySelector('.title-bar');
+}
+
 function initTemaPopup() {
+  criarPopupTemas();
   carregarTema();
   atualizarMiniaturas();
 

@@ -99,21 +99,6 @@
     </div>
   </div>
 
-  <div id="temaOverlay" class="overlay hidden"></div>
-  <div id="popupTemas" class="popup-temas hidden">
-    <div class="title-bar">
-      <span>🎨 Temas</span>
-      <button id="fecharTemas" class="fechar-btn" data-tooltip="Fechar janela">X</button>
-    </div>
-    <div class="tema-opcoes">
-      <button class="tema-btn" data-tema="claro" data-tooltip="Tema Claro"><span class="miniatura"></span> Claro</button>
-      <button class="tema-btn" data-tema="escuro" data-tooltip="Tema Escuro"><span class="miniatura"></span> Escuro</button>
-      <button class="tema-btn" data-tema="pastel" data-tooltip="Cores suaves e delicadas"><span class="miniatura"></span> Pastel</button>
-      <button class="tema-btn" data-tema="futurista" data-tooltip="Tons escuros e neon"><span class="miniatura"></span> Futurista</button>
-      <button class="tema-btn" data-tema="terra" data-tooltip="Cores terrosas e naturais"><span class="miniatura"></span> Terra</button>
-    </div>
-    <button id="resetPosicao" class="reset-posicao" data-tooltip="Voltar para o centro">🔄 Resetar Posição</button>
-  </div>
 
   <footer>
     Desenvolvido por equipe Lumix ©

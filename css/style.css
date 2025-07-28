@@ -485,7 +485,7 @@ footer {
   backdrop-filter: blur(10px);
   color: var(--text-dark);
   text-align: center;
-  width: 100vw;
+  width: 100%;
   align-self: stretch;
   margin-top: auto;
   padding: 20px 0;
@@ -501,7 +501,7 @@ body.dark-mode footer {
   backdrop-filter: blur(10px);
   color: var(--accent-green);
   border-top: 1px solid var(--accent-green);
-  width: 100vw;
+  width: 100%;
   align-self: stretch;
   margin-top: auto;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.5);

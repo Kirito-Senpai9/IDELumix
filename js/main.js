@@ -58,7 +58,7 @@ function atualizarMiniaturas() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function initTemaPopup() {
   carregarTema();
   atualizarMiniaturas();
 
@@ -82,7 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
       fecharPopupTemas();
     });
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initTemaPopup);
+} else {
+  initTemaPopup();
+}
 
 // Drag and drop da janela
 let arrastando = false;

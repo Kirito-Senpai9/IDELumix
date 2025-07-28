@@ -6,7 +6,8 @@
   --bg-dark: #1e1e2f;
   --text-dark: #2d3436;
   --accent-green: #2ecc71;
-  --nav-bg: #1e1e2f99;
+  /* Barra de navegação translúcida no modo claro */
+  --nav-bg: #ffffff99;
 }
 
 /* Temas adicionais */
@@ -44,6 +45,8 @@ body.tema-terra {
 body.dark-mode {
   --primary: #005f3f;
   --secondary: #008651;
+  /* Mantém a barra escura no modo noturno */
+  --nav-bg: #1e1e2f99;
 }
 
 /* ======== ESTILOS GERAIS ======== */

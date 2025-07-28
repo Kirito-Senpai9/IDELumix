@@ -575,6 +575,10 @@ body.dark-mode .team-member .desc {
   z-index: 998;
 }
 
+.overlay.hidden {
+  display: none;
+}
+
 .overlay.active {
   opacity: 1;
   visibility: visible;
@@ -596,6 +600,10 @@ body.dark-mode .team-member .desc {
   visibility: hidden;
   transition: opacity 0.3s ease, transform 0.3s ease;
   width: 260px;
+}
+
+.popup-temas.hidden {
+  display: none;
 }
 
 body.dark-mode .popup-temas {

@@ -48,17 +48,22 @@ function fecharPopupTemas() {
 }
 
 
+const themeColors = {
+  claro: { primary: '#6c5ce7', secondary: '#a29bfe' },
+  escuro: { primary: '#005f3f', secondary: '#008651' },
+  pastel: { primary: '#ff9aa2', secondary: '#ffb7b2' },
+  futurista: { primary: '#00e5ff', secondary: '#7c00ff' },
+  terra: { primary: '#795548', secondary: '#bcaaa4' }
+};
+
 function atualizarMiniaturas() {
   temaBtns.forEach(btn => {
     const tema = btn.dataset.tema;
     const mini = btn.querySelector('.miniatura');
-    const dummy = document.createElement('div');
-    if (tema === 'escuro') dummy.classList.add('dark-mode');
-    else if (tema !== 'claro') dummy.classList.add(`tema-${tema}`);
-    document.body.appendChild(dummy);
-    const styles = getComputedStyle(dummy);
-    mini.style.background = `linear-gradient(135deg, ${styles.getPropertyValue('--primary')}, ${styles.getPropertyValue('--secondary')})`;
-    document.body.removeChild(dummy);
+    const colors = themeColors[tema];
+    if (colors) {
+      mini.style.background = `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`;
+    }
   });
 }
 

@@ -28,8 +28,14 @@ function carregarTema() {
 
 function abrirPopupTemas() {
   if (!popupTemas) return;
-  popupTemas.classList.add('active');
-  temaOverlay.classList.add('active');
+  popupTemas.style.display = 'block';
+  temaOverlay.style.display = 'block';
+  popupTemas.classList.remove('hidden');
+  temaOverlay.classList.remove('hidden');
+  requestAnimationFrame(() => {
+    popupTemas.classList.add('active');
+    temaOverlay.classList.add('active');
+  });
   restaurarPosicao();
 }
 
@@ -37,28 +43,14 @@ function fecharPopupTemas() {
   if (!popupTemas) return;
   popupTemas.classList.remove('active');
   temaOverlay.classList.remove('active');
+  setTimeout(() => {
+    popupTemas.classList.add('hidden');
+    temaOverlay.classList.add('hidden');
+    popupTemas.style.display = 'none';
+    temaOverlay.style.display = 'none';
+  }, 300);
 }
 
-if (btnTemas) btnTemas.addEventListener('click', abrirPopupTemas);
-if (fecharTemas) fecharTemas.addEventListener('click', fecharPopupTemas);
-if (temaOverlay) temaOverlay.addEventListener('click', fecharPopupTemas);
-
-if (btnModo) {
-  btnModo.addEventListener('click', () => {
-    const novo = selectedTheme === 'escuro' ? 'claro' : 'escuro';
-    applyTheme(novo);
-  });
-}
-
-temaBtns.forEach(btn => {
-  const tema = btn.dataset.tema;
-  btn.addEventListener('mouseenter', () => applyTheme(tema, false));
-  btn.addEventListener('mouseleave', () => applyTheme(selectedTheme, false));
-  btn.addEventListener('click', () => {
-    applyTheme(tema);
-    fecharPopupTemas();
-  });
-});
 
 function atualizarMiniaturas() {
   temaBtns.forEach(btn => {
@@ -77,6 +69,28 @@ function atualizarMiniaturas() {
 document.addEventListener('DOMContentLoaded', () => {
   carregarTema();
   atualizarMiniaturas();
+  fecharPopupTemas();
+
+  if (btnTemas) btnTemas.addEventListener('click', abrirPopupTemas);
+  if (fecharTemas) fecharTemas.addEventListener('click', fecharPopupTemas);
+  if (temaOverlay) temaOverlay.addEventListener('click', fecharPopupTemas);
+
+  if (btnModo) {
+    btnModo.addEventListener('click', () => {
+      const novo = selectedTheme === 'escuro' ? 'claro' : 'escuro';
+      applyTheme(novo);
+    });
+  }
+
+  temaBtns.forEach(btn => {
+    const tema = btn.dataset.tema;
+    btn.addEventListener('mouseenter', () => applyTheme(tema, false));
+    btn.addEventListener('mouseleave', () => applyTheme(selectedTheme, false));
+    btn.addEventListener('click', () => {
+      applyTheme(tema);
+      fecharPopupTemas();
+    });
+  });
 });
 
 // Drag and drop da janela

@@ -6,6 +6,7 @@
   --bg-dark: #1e1e2f;
   --text-dark: #2d3436;
   --accent-green: #2ecc71;
+  --nav-bg: #1e1e2f99;
 }
 
 /* Temas adicionais */
@@ -16,6 +17,7 @@ body.tema-pastel {
   --bg-dark: #ffdfe8;
   --text-dark: #5c5470;
   --accent-green: #ff80a0;
+  --nav-bg: #ffdfe899;
 }
 
 body.tema-futurista {
@@ -25,6 +27,7 @@ body.tema-futurista {
   --bg-dark: #05050c;
   --text-dark: #e0e0e0;
   --accent-green: #00ff9c;
+  --nav-bg: #05050c99;
 }
 
 body.tema-terra {
@@ -34,6 +37,7 @@ body.tema-terra {
   --bg-dark: #3e2723;
   --text-dark: #4e342e;
   --accent-green: #8bc34a;
+  --nav-bg: #3e272399;
 }
 
 /* Modo escuro utilizando variáveis para compatibilidade com miniaturas */
@@ -137,14 +141,14 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--bg-light);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
-  color: var(--text-dark);
+  color: var(--accent-green);
   width: 100%;
   padding: 15px 30px;
   position: sticky;
   top: 0;
-  border-bottom: 1px solid var(--secondary);
+  border-bottom: 1px solid var(--accent-green);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   animation: fadeDown 0.5s ease;
   z-index: 1000;
@@ -208,9 +212,6 @@ body.dark-mode .home-btn::after {
   border-bottom-color: var(--secondary);
 }
 
-body.dark-mode .nav-title {
-  color: var(--accent-green);
-}
 
 /* ======== BOTÕES DA NAVBAR ======== */
 .navbar .botoes {
@@ -312,10 +313,6 @@ body.dark-mode button {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-body.dark-mode .navbar .botoes button {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-}
-
 body.dark-mode button:hover {
   background-color: var(--secondary);
 }
@@ -327,13 +324,6 @@ body.dark-mode .container {
   transition: background 0.4s ease, transform 0.3s;
 }
 
-body.dark-mode .navbar {
-  background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(12px);
-  color: var(--accent-green);
-  border-bottom: 1px solid var(--accent-green);
-  width: 100%;
-}
 
 /* ======== POPUP DE SINTAXE ======== */
 .popup {

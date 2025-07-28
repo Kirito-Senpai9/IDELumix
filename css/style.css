@@ -324,7 +324,7 @@ body.dark-mode .navbar {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  z-index: 999;
+  z-index: 1101;
   max-width: 600px;
   width: 90%;
   color: #000;
@@ -578,7 +578,7 @@ body.dark-mode .team-member .desc {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease;
-  z-index: 998;
+  z-index: 1100;
 }
 
 .overlay.hidden {
@@ -601,7 +601,7 @@ body.dark-mode .team-member .desc {
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  z-index: 999;
+  z-index: 1101;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, transform 0.3s ease;

@@ -8,6 +8,34 @@
   --accent-green: #2ecc71;
 }
 
+/* Temas adicionais */
+body.tema-pastel {
+  --primary: #ffb3ba;
+  --secondary: #ffdfba;
+  --bg-light: #fff7f9;
+  --bg-dark: #ffe5ec;
+  --text-dark: #5e548e;
+  --accent-green: #ff88a6;
+}
+
+body.tema-futurista {
+  --primary: #7c00ff;
+  --secondary: #00e5ff;
+  --bg-light: #0f0f1a;
+  --bg-dark: #000;
+  --text-dark: #e0e0e0;
+  --accent-green: #00ff9c;
+}
+
+body.tema-terra {
+  --primary: #6b4226;
+  --secondary: #a65f38;
+  --bg-light: #f4ede3;
+  --bg-dark: #2f2519;
+  --text-dark: #3c3c3c;
+  --accent-green: #4b8b3b;
+}
+
 /* ======== ESTILOS GERAIS ======== */
 body {
   margin: 0;
@@ -15,7 +43,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background: var(--bg-light);
   color: var(--text-dark);
-  transition: background 0.4s ease, color 0.4s ease;
+  transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -114,6 +142,7 @@ button:hover {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   animation: fadeDown 0.5s ease;
   z-index: 1000;
+  transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
 .nav-title {
@@ -530,4 +559,124 @@ body.dark-mode .team-container {
 body.dark-mode .team-member h3,
 body.dark-mode .team-member .desc {
   color: var(--accent-green);
+}
+
+/* ======== POPUP DE TEMAS ======== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 998;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-temas {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--secondary);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  width: 260px;
+}
+
+body.dark-mode .popup-temas {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
+.popup-temas.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.popup-temas .title-bar {
+  background: #2196f3;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  cursor: move;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.popup-temas .tema-opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.popup-temas button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.popup-temas .miniatura {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid #0003;
+}
+
+.popup-temas .fechar-btn {
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.popup-temas .reset-posicao {
+  margin-top: 10px;
+}
+
+/* ======== TOOLTIP ======== */
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 5px);
+  transform: translateX(-50%) translateY(5px);
+  background: #000;
+  color: #fff;
+  padding: 4px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }

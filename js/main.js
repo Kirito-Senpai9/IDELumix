@@ -19,11 +19,14 @@ function applyTheme(nome, save = true) {
   if (nome === 'terra') document.body.classList.add('tema-terra');
   selectedTheme = nome;
   if (btnModo) btnModo.textContent = nome === 'escuro' ? '☀️ Modo Claro' : '🌙 Modo Escuro';
-  if (save) localStorage.setItem('theme', nome);
+  if (save) {
+    try { localStorage.setItem('theme', nome); } catch (e) { /* ignore */ }
+  }
 }
 
 function carregarTema() {
-  const salvo = localStorage.getItem('theme');
+  let salvo = null;
+  try { salvo = localStorage.getItem('theme'); } catch (e) { salvo = null; }
   applyTheme(salvo || 'claro', false);
 }
 
@@ -130,7 +133,8 @@ let offX = 0;
 let offY = 0;
 
 function restaurarPosicao() {
-  const pos = JSON.parse(localStorage.getItem('popupTemasPos') || 'null');
+  let pos = null;
+  try { pos = JSON.parse(localStorage.getItem('popupTemasPos') || 'null'); } catch (e) { pos = null; }
   if (pos) {
     popupTemas.style.left = pos.left;
     popupTemas.style.top = pos.top;
@@ -162,14 +166,18 @@ function pararDrag() {
   arrastando = false;
   document.removeEventListener('mousemove', moverDrag);
   document.removeEventListener('mouseup', pararDrag);
-  localStorage.setItem('popupTemasPos', JSON.stringify({ left: popupTemas.style.left, top: popupTemas.style.top }));
+  try {
+    localStorage.setItem('popupTemasPos', JSON.stringify({ left: popupTemas.style.left, top: popupTemas.style.top }));
+  } catch (e) {
+    /* ignore */
+  }
 }
 
 if (titleBar) titleBar.addEventListener('mousedown', iniciarDrag);
 
 if (resetPosicao) {
   resetPosicao.addEventListener('click', () => {
-    localStorage.removeItem('popupTemasPos');
+    try { localStorage.removeItem('popupTemasPos'); } catch (e) { /* ignore */ }
     restaurarPosicao();
   });
 }

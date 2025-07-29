@@ -1,5 +1,6 @@
 <?php
-header("Content-Type: application/json");
+declare(strict_types=1);
+header('Content-Type: application/json');
 
 function safe_eval($code) {
   try {
@@ -7,6 +8,13 @@ function safe_eval($code) {
   } catch (Throwable $t) {
     return "Erro ao avaliar expressão: " . $t->getMessage();
   }
+}
+
+function expand_vars(string $expr, array $vars): string {
+  foreach ($vars as $k => $v) {
+    $expr = preg_replace('/\\b' . preg_quote($k, '/') . '\\b/', (string)$v, $expr);
+  }
+  return $expr;
 }
 
 $codigoOriginal = $_POST["codigo"];
@@ -59,10 +67,7 @@ foreach ($linhas as $linha) {
   if (preg_match("/^se (.+)\$/", $linha, $m)) {
     $javaCode .= "if ({$m[1]}) {\n";
     $condicao = $m[1];
-    $condEval = $condicao;
-    foreach ($variaveis as $k => $v) {
-      $condEval = preg_replace('/\\b' . preg_quote($k, '/') . '\\b/', $v, $condEval);
-    }
+    $condEval = expand_vars($condicao, $variaveis);
     $condResult = safe_eval($condEval);
     $condicaoAtiva = ($condResult) ? "se" : "senao";
     $ignorando = ($condicaoAtiva !== "se");
@@ -134,10 +139,7 @@ function interpretar_linha($linha, &$variaveis, &$resultadoCompleto, $emFuncao =
     } elseif (preg_match('/^[a-zA-Z_][a-zA-Z0-9_]*\$/', $expr)) {
       $resultadoCompleto .= "[valor de $expr em tempo de execução]\n";
     } else {
-      $eval = $expr;
-      foreach ($variaveis as $k => $v) {
-        $eval = preg_replace('/\\b' . preg_quote($k, '/') . '\\b/', $v, $eval);
-      }
+      $eval = expand_vars($expr, $variaveis);
       $val = safe_eval($eval);
       $resultadoCompleto .= $val . "\n";
     }

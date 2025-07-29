@@ -1,4 +1,4 @@
-﻿# 🧠 IDELumix — Interpretador de Linguagem Personalizada
+# 🧠 IDELumix — Interpretador de Linguagem Personalizada
 
 Uma IDE desenvolvida em PHP e JavaScript que interpreta uma linguagem simplificada baseada em Java. Ideal para aprendizado, testes rápidos e desenvolvimento de lógica de programação com sintaxe acessível.
 
@@ -19,3 +19,8 @@ Uma IDE desenvolvida em PHP e JavaScript que interpreta uma linguagem simplifica
 definir idade = 25
 mostrar "Sua idade é:"
 mostrar idade
+```
+
+Este exemplo mostra como declarar uma variável e exibi-la utilizando a sintaxe simplificada da Lumix.
+
+

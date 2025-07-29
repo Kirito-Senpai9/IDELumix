@@ -285,15 +285,20 @@ body.dark-mode .home-btn::after {
   margin: 40px 0;
   padding: 40px 20px;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background-size: 200% 200%;
   color: #fff;
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-  animation: fadeDown 0.8s ease;
+  animation: gradientShift 8s ease infinite, fadeDown 0.8s ease;
 }
-.home-hero h1,
-.home-hero p {
+.hero-title,
+.hero-subtitle {
   color: inherit;
+  opacity: 0;
+  transform: translateY(10px);
 }
+.hero-title { animation: textSlide 0.8s forwards; }
+.hero-subtitle { animation: textSlide 0.8s forwards 0.2s; }
 
 body.dark-mode .home-hero {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -485,6 +490,16 @@ body.dark-mode #filtroSintaxe:focus {
 
 @keyframes memberFade {
   from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes textSlide {
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -762,5 +777,18 @@ body.dark-mode .popup-temas {
   }
   .home-hero {
     padding: 30px 15px;
+  }
+  .navbar .nav-title {
+    font-size: 20px;
+  }
+  .navbar .botoes button {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+  .hero-title {
+    font-size: 24px;
+  }
+  .hero-subtitle {
+    font-size: 16px;
   }
 }

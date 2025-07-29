@@ -58,7 +58,7 @@ body.dark-mode {
 }
 
 /* ======== ESTILOS GERAIS ======== */
-html, body {
+body {
   margin: 0;  /* Remove espaçamento padrão */
   padding: 0;
   font-family: 'Segoe UI', sans-serif;

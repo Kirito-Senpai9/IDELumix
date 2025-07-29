@@ -141,6 +141,24 @@ if (document.readyState === 'loading') {
   initTemaPopup();
 }
 
+// Fechar pop-ups com ESC e auto ajustar textarea
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    fecharPopupTemas();
+    fecharPopup();
+  }
+});
+
+const textarea = document.getElementById('codigo');
+if (textarea) {
+  const autoResize = () => {
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+  };
+  textarea.addEventListener('input', autoResize);
+  autoResize();
+}
+
 // Drag and drop da janela
 let arrastando = false;
 let offX = 0;
